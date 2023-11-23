@@ -1,32 +1,35 @@
 package starter.stepdefinitions;
 
+import starter.pages.paginaPrincipal;
+import starter.pages.subCategoriaPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.ensure.Ensure;
-import net.serenitybdd.screenplay.questions.page.TheWebPage;
-import starter.navigation.NavigateTo;
-import starter.search.LookForInformation;
 
 public class SearchStepDefinitions {
 
-    @Given("{actor} is researching things on the internet")
-    public void researchingThings(Actor actor) {
-        actor.wasAbleTo(NavigateTo.theSearchHomePage());
+    private paginaPrincipal paginaPrincipal = new paginaPrincipal();
+    private subCategoriaPage subCategoriaPage = new subCategoriaPage();
+    @Given("El robot está en la página de Tiendas Éxito")
+    public void elRobotEstaEnLaPaginaDeTiendasExito() {
+        paginaPrincipal.open();
+        paginaPrincipal.cerrarModal();
     }
 
-    @When("{actor} looks up {string}")
-    public void searchesFor(Actor actor, String term) {
-        actor.attemptsTo(
-                LookForInformation.about(term)
-        );
+    @When("Elige una categoría y subcategoría")
+    public void eligeUnaCategoriaYSubcategoria() {
+        paginaPrincipal.seleccionarMenu();
+        paginaPrincipal.seleccionarCategoriaPorNombre("Tecnología","Televisores");
+    }
+    @And("Elige {int} productos aleatoriamente con cantidades entre {int} y {int}")
+    public void eligeProductosAleatoriamenteConCantidadesEntreY(int numeroProductos, int cantidadMinima, int cantidadMaxima) {
+        for(int i=0; i<numeroProductos;i++){
+            subCategoriaPage.eligirProductosconCantidadAleatoria(cantidadMinima,cantidadMaxima);
+        }
     }
 
-    @Then("{actor} should see information about {string}")
-    public void should_see_information_about(Actor actor, String term) {
-        actor.attemptsTo(
-                Ensure.that(TheWebPage.title()).containsIgnoringCase(term)
-        );
+    @Then("Valida que los productos en el carrito son correctos")
+    public void validaQueLosProductosEnElCarritoSonCorrectos() {
     }
 }
