@@ -24,7 +24,9 @@ public class PaginaPrincipal extends PageObject {
     private WebElementFacade carritoButton;
 
     public void cerrarModal() {
-        modalCloseButton.waitUntilVisible().withTimeoutOf(Duration.ofSeconds(10)).click();
+        if (modalCloseButton.isPresent()) {
+            modalCloseButton.click();
+        }
     }
 
     public void seleccionarMenu() {

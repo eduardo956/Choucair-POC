@@ -7,7 +7,6 @@ import starter.pages.CheckOut;
 import starter.pages.PaginaPrincipal;
 import starter.pages.SubCategoria;
 import starter.utils.ContextSerenity;
-import starter.utils.Producto;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(

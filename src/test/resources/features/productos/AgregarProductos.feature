@@ -1,7 +1,7 @@
 Feature: Añadir productos al carrito de compras
   Background:
     Given Estoy en la página de Tiendas Éxito
-    When  Elijo la categoría "Celulares y accesorios" y la subcategoría "Samsung"
+    When  Elijo la categoría "Tecnología" y la subcategoría "Accesorios para videojuegos"
     And   Elijo 5 productos aleatoriamente con cantidades entre 1 y 10
     And   Selecciono el carrito de Compras
     And   Ingreso el email "eduardo250096@hotmail.com"

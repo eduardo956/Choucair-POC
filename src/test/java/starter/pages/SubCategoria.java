@@ -13,6 +13,8 @@ public class SubCategoria extends PageObject {
     private static final String PRODUCTOS_SELECTOR = "vtex-search-result-3-x-galleryItem";
     private static final String BOTON_COMPRAR_SELECTOR = "exito-vtex-components-4-x-mainBuyButton";
     private static final String BOTON_AGREGAR_CANTIDAD_SELECTOR = "shelf-exito-vtex-components-buy-button-manager-more";
+    private static final String NOMBRE_PRODUCTO_SELECTOR = "vtex-store-components-3-x-productNameContainer";
+    private static final String PRECIO_PRODUCTO_SELECTOR = ".exito-vtex-components-4-x-PricePDP .exito-vtex-components-4-x-currencyContainer";
     @FindBy(id = GALERIA_DE_PRODUCTOS_SELECTOR)
     private WebElementFacade galleryLayoutContainer;
 
@@ -72,13 +74,31 @@ public class SubCategoria extends PageObject {
     private String obtenerNombreProducto(WebElementFacade producto) {
         // Lógica para obtener el nombre del producto a partir del WebElementFacade
         // Reemplaza esto con tu lógica real
-        return "Nombre del Producto";
+
+        WebElementFacade nombreContainer = producto.find(By.className(NOMBRE_PRODUCTO_SELECTOR));
+        return nombreContainer.getText();
     }
 
     private double obtenerPrecioProducto(WebElementFacade producto) {
-        // Lógica para obtener el precio del producto a partir del WebElementFacade
-        // Reemplaza esto con tu lógica real
-        return 10.0;
+        WebElementFacade precioContainer = producto.find(By.cssSelector(PRECIO_PRODUCTO_SELECTOR));
+        String precioTexto = precioContainer.getText();
+
+        // Eliminar caracteres no numéricos y convertir la cadena a double
+        precioTexto = precioTexto.replaceAll("[^0-9.]", "");
+
+        // Reemplazar la coma (",") por el punto (".") como separador decimal
+        precioTexto = precioTexto.replace(".", "");
+
+        try {
+            return Double.parseDouble(precioTexto);
+        } catch (NumberFormatException e) {
+            // Manejar la excepción, por ejemplo, imprimir un mensaje de error
+            System.err.println("Error al convertir el precio: " + precioTexto);
+            e.printStackTrace();
+            return 0.0;
+        }
     }
+
+
 
 }

@@ -30,6 +30,7 @@ public class SearchStepDefinitions extends CucumberTestSuite {
     }
     @And("Ingreso el email {string}")
     public void carritoingresoElEmail(String email) {
+        List<Producto> productosRecuperados = ContextUtils.obtenerContextoProductos("Productos");
         checkOutPage.ingresarEmail(email);
     }
     @Then("Valida que los productos en el carrito son correctos")
