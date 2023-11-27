@@ -1,10 +1,11 @@
-package starter.pages;
+package WEB.pages;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import starter.utils.Producto;
+import org.openqa.selenium.JavascriptExecutor;
+import WEB.utils.Producto;
 
 import java.util.*;
 
@@ -48,10 +49,8 @@ public class SubCategoria extends PageObject {
 
         for (WebElementFacade randomProduct : productos) {
             WebElementFacade randomButton = randomProduct.find(By.className(BOTON_COMPRAR_SELECTOR));
-            randomButton.click();
-
-            WebElementFacade randomAddButton = randomProduct.find(By.className(BOTON_AGREGAR_CANTIDAD_SELECTOR));
-            randomAddButton.waitUntilVisible();
+            scrollToElement(randomButton);
+            randomButton.waitUntilClickable().click();
 
             int cantidadAleatoria = new Random().nextInt(cantidadMaxima - cantidadMinima + 1) + cantidadMinima;
 
@@ -60,21 +59,31 @@ public class SubCategoria extends PageObject {
             double precioProducto = obtenerPrecioProducto(randomProduct);
 
             // Crear objeto Producto y agregarlo a la lista
-            Producto producto = new Producto(nombreProducto, precioProducto, cantidadAleatoria);
+            Producto producto = new Producto(nombreProducto, precioProducto*cantidadAleatoria, cantidadAleatoria);
             productosList.add(producto);
 
+            WebElementFacade randomAddButton = randomProduct.find(By.className(BOTON_AGREGAR_CANTIDAD_SELECTOR));
+
             for (int i = 1; i < cantidadAleatoria; i++) {
-                randomAddButton.click();
+                randomAddButton.waitUntilClickable().click();
             }
         }
-
         return productosList;
     }
 
-    private String obtenerNombreProducto(WebElementFacade producto) {
-        // Lógica para obtener el nombre del producto a partir del WebElementFacade
-        // Reemplaza esto con tu lógica real
+    private void scrollToElement(WebElementFacade element) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center', inline: 'center'});", element);
 
+        // Esperar a que la animación de desplazamiento termine
+        try {
+            Thread.sleep(1000); // Puedes ajustar el tiempo de espera según sea necesario
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String obtenerNombreProducto(WebElementFacade producto) {
         WebElementFacade nombreContainer = producto.find(By.className(NOMBRE_PRODUCTO_SELECTOR));
         return nombreContainer.getText();
     }

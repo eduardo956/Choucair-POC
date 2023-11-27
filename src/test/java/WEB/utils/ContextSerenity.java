@@ -1,4 +1,4 @@
-package starter.utils;
+package WEB.utils;
 import net.serenitybdd.core.Serenity;
 
 import java.util.List;

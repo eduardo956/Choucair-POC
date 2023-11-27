@@ -1,21 +1,18 @@
-package starter.utils;
+package WEB.utils;
 
 public class Producto {
     private String nombre;
-    private double precio;
+    private double precioTotal;
     private int cantidad;
 
-    public Producto(String nombre, double precio, int cantidad) {
+    public Producto(String nombre, double precioTotal, int cantidad) {
         this.nombre = nombre;
-        this.precio = precio;
+        this.precioTotal = precioTotal;
         this.cantidad = cantidad;
     }
 
     public Producto() {
     }
-
-    // Agrega getters y setters según sea necesario
-
     public String getNombre() {
         return nombre;
     }
@@ -24,12 +21,12 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
-        return precio;
+    public double getPrecioTotal() {
+        return precioTotal;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
     }
 
     public int getCantidad() {

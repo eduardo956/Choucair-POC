@@ -1,17 +1,17 @@
-package starter;
+package WEB;
 
 import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
-import starter.pages.CheckOut;
-import starter.pages.PaginaPrincipal;
-import starter.pages.SubCategoria;
-import starter.utils.ContextSerenity;
+import WEB.pages.CheckOut;
+import WEB.pages.PaginaPrincipal;
+import WEB.pages.SubCategoria;
+import WEB.utils.ContextSerenity;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/productos/AgregarProductos.feature",
-        glue = "starter.stepdefinitions",
+        features = "src/test/resources/WEB/features",
+        glue = "WEB.stepdefinitions",
         plugin = "pretty"
 )
 

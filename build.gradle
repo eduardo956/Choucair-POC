@@ -33,6 +33,7 @@ ext {
     junit_platform_launcher_version="1.10.0"
     junit_vintage_engine_version="5.10.0"
     logback_classic_version="1.4.11"
+    rest_assured_version="5.3.0"
 }
 
 dependencies {
@@ -41,10 +42,10 @@ dependencies {
         testImplementation "net.serenity-bdd:serenity-cucumber:${serenity_version}"
         testImplementation "net.serenity-bdd:serenity-ensure:${serenity_version}"
         testImplementation "org.junit.vintage:junit-vintage-engine:${junit_vintage_engine_version}"
+        testImplementation "io.rest-assured:rest-assured:${rest_assured_version}"
+        implementation "net.serenity-bdd:serenity-rest-assured:${serenity_version}"
         implementation "ch.qos.logback:logback-classic:${logback_classic_version}"
     }
 }
-
-gradle.startParameter.continueOnFailure = true
 
 // test.finalizedBy(aggregate)
