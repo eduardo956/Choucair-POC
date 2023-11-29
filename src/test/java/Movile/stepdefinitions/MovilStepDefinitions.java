@@ -17,7 +17,6 @@ public class MovilStepDefinitions extends CucumberMovileTestSuite {
         PaginaPrincipal.cerrarModalPublicidad();
         PaginaPrincipal.verificarPaginaPrincipal();
     }
-
     @When("Cierro el modal de publicidad")
     public void cierroElModalDePublicidad() {
         PaginaPrincipal.cerrarModalPublicidad();

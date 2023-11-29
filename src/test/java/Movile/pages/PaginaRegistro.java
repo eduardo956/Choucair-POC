@@ -2,10 +2,7 @@ package Movile.pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidTouchAction;
-import io.appium.java_client.touch.TapOptions;
-import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.datatable.DataTable;
 import net.serenitybdd.core.annotations.findby.By;
@@ -13,14 +10,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.WebDriverFacade;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.interactions.Actions;
-
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PaginaRegistro extends PageObject {
 

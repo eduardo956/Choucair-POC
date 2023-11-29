@@ -6,7 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import WEB.CucumberTestSuite;
-
 import java.time.Duration;
 
 @DefaultUrl(CucumberTestSuite.BASE_URL)
