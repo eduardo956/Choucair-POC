@@ -13,8 +13,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/Movile/features",
         glue = "Movile.stepdefinitions",
-        plugin = "pretty",
-        tags = "@test"
+        plugin = "pretty"
 )
 
 public class CucumberMovileTestSuite {

@@ -20,8 +20,6 @@ Feature: Regostrarse y Agregar producto al carrito en la aplicación móvil de �
     And   Otorgo permisos a la app sobre mi ubicacion
     Then  Deberia visualizar la pantalla principal
 
-
-  @test
   Scenario: Validar que cuando me logeo y selecciono un producto, aparesca en el carrito de compras
     Given Me encuentro en la aplicacion Movil de tiendas Exito
     And   Selecciono el boton Ingresar
