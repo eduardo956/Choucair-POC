@@ -21,8 +21,12 @@ public class PaginaPrincipal extends PageObject {
     private WebElementFacade carritoButton;
 
     public void cerrarModal() {
-        WebElementFacade modalCloseButton = find(By.id(MODAL_BOTON_CERRAR_SELECTOR));
-        modalCloseButton.waitUntilClickable().click();
+        try {
+            WebElementFacade modalCloseButton = find(By.id(MODAL_BOTON_CERRAR_SELECTOR));
+            modalCloseButton.click();
+        } catch (Exception e) {
+            System.out.println("No se pudo cerrar el modal de publicidad ");
+        }
     }
 
     public void seleccionarMenu() {
