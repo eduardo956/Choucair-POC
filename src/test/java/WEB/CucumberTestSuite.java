@@ -10,7 +10,7 @@ import WEB.utils.ContextSerenity;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/WEB/features",
+        features = "src/test/resources/WEB/features/AgregarProductosV2.feature",
         glue = "WEB.stepdefinitions",
         plugin = "pretty"
 )
